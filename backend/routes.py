@@ -80,7 +80,7 @@ def update_picture(id):
     if picture:
         updated_picture = request.get_json()
         picture.update(updated_picture)
-        return jsonify(picture), 200
+        return jsonify(picture), 201
     else:
         abort({"message": "picture not found"}, 404)
 
