@@ -2,8 +2,6 @@ from . import app
 import os
 import json
 from flask import jsonify, request, make_response, abort, url_for, redirect
-import sys
-print(sys.path)
 
 SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
 json_url = os.path.join(SITE_ROOT, "data", "pictures.json")
@@ -22,7 +20,6 @@ def health():
 # COUNT THE NUMBER OF PICTURES
 ######################################################################
 
-
 @app.route("/count")
 def count():
     """return length of data"""
@@ -31,10 +28,10 @@ def count():
 
     return {"message": "Internal server error"}, 500
 
-
 ######################################################################
 # GET ALL PICTURES
 ######################################################################
+
 @app.route("/picture", methods=["GET"])
 def get_pictures():
     return jsonify(data), 200
@@ -42,7 +39,6 @@ def get_pictures():
 ######################################################################
 # GET A PICTURE
 ######################################################################
-
 
 @app.route("/picture/<int:id>", methods=["GET"])
 def get_picture_by_id(id):
@@ -55,6 +51,7 @@ def get_picture_by_id(id):
 ######################################################################
 # CREATE A PICTURE
 ######################################################################
+
 @app.route("/picture", methods=["POST"])
 def create_picture():
     try:
